@@ -51,14 +51,14 @@ class WordList:
 
 
     def get_freqs(self):
-        for w in self.word_count:
+        for w in self.words_list:
             if w in self.word_count:
                 self.word_count[w] += 1
 
             else:
                 self.word_count[w] = 1
 
-            return self.word_count
+        return self.word_count
 
 
 class FreqPrinter:
@@ -67,14 +67,14 @@ class FreqPrinter:
 
 
     def print_freqs(self):
-        format_width = max(len(w) for w in self.freqs)
-        output_string = ""
+        width = max(len(w) for w in self.freqs)
+        word_string = ""
 
         for w in sorted(self.freqs, key=self.freqs.get, reverse=True):
-            count = self.freqs[w]
-            output_string += (f"{w:>{format_width}} : {count} : {'*' * count}\n")
+            n = self.freqs[w]
+            word_string += f"{w:>{width}} | {n} {'*' * n}\n"
 
-        print(output_string)
+        print(word_string)
 
 
 if __name__ == "__main__":
